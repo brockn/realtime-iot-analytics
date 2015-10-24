@@ -93,8 +93,7 @@ class ViewController: UIViewController {
         do {
             let data = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
             let body = (String(data: data, encoding: NSUTF8StringEncoding)!)
-        post(["body": body],
-            url:endpointUrl)
+            post(["body": body], url:endpointUrl)
         } catch let error as NSError {
             print(error)
         }
