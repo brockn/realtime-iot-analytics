@@ -1,0 +1,441 @@
+{
+  "pipelineConfig" : {
+    "schemaVersion" : 1,
+    "version" : 3,
+    "uuid" : "55e4977f-9abd-4c4c-a264-eb85c2dfaa5e",
+    "description" : "",
+    "configuration" : [ {
+      "name" : "executionMode",
+      "value" : "STANDALONE"
+    }, {
+      "name" : "deliveryGuarantee",
+      "value" : "AT_LEAST_ONCE"
+    }, {
+      "name" : "shouldRetry",
+      "value" : true
+    }, {
+      "name" : "retryAttempts",
+      "value" : -1
+    }, {
+      "name" : "memoryLimit",
+      "value" : "${jvm:maxMemoryMB() * 0.65}"
+    }, {
+      "name" : "memoryLimitExceeded",
+      "value" : "STOP_PIPELINE"
+    }, {
+      "name" : "notifyOnStates",
+      "value" : [ "RUN_ERROR", "STOPPED", "FINISHED" ]
+    }, {
+      "name" : "emailIDs",
+      "value" : [ ]
+    }, {
+      "name" : "constants",
+      "value" : [ ]
+    }, {
+      "name" : "badRecordsHandling",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget::1"
+    }, {
+      "name" : "clusterSlaveMemory",
+      "value" : 1024
+    }, {
+      "name" : "clusterSlaveJavaOpts",
+      "value" : "-XX:PermSize=128M -XX:MaxPermSize=256M -Dlog4j.debug"
+    }, {
+      "name" : "clusterLauncherEnv",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "previewConfig" : {
+        "previewSource" : "CONFIGURED_SOURCE",
+        "batchSize" : 10,
+        "timeout" : 10000,
+        "writeToDestinations" : false,
+        "showHeader" : false,
+        "showFieldType" : true,
+        "rememberMe" : false
+      }
+    },
+    "stages" : [ {
+      "instanceName" : "com_streamsets_pipeline_stage_origin_kafka_KafkaDSource1445481526846",
+      "library" : "streamsets-datacollector-cdh_kafka_1_2_0-lib",
+      "stageName" : "com_streamsets_pipeline_stage_origin_kafka_KafkaDSource",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "metadataBrokerList",
+        "value" : "node01:9092,node02:9092,node03:9092"
+      }, {
+        "name" : "zookeeperConnect",
+        "value" : "node00:2181"
+      }, {
+        "name" : "consumerGroup",
+        "value" : "streamsetsDataCollector1"
+      }, {
+        "name" : "topic",
+        "value" : "CRASH_EVENTS"
+      }, {
+        "name" : "dataFormat",
+        "value" : "JSON"
+      }, {
+        "name" : "charset",
+        "value" : "UTF-8"
+      }, {
+        "name" : "removeCtrlChars",
+        "value" : false
+      }, {
+        "name" : "produceSingleRecordPerMessage",
+        "value" : false
+      }, {
+        "name" : "maxBatchSize",
+        "value" : 1000
+      }, {
+        "name" : "maxWaitTime",
+        "value" : 5000
+      }, {
+        "name" : "kafkaConsumerConfigs",
+        "value" : [ ]
+      }, {
+        "name" : "textMaxLineLen",
+        "value" : 1024
+      }, {
+        "name" : "jsonContent",
+        "value" : "MULTIPLE_OBJECTS"
+      }, {
+        "name" : "jsonMaxObjectLen",
+        "value" : 4096
+      }, {
+        "name" : "csvFileFormat",
+        "value" : "CSV"
+      }, {
+        "name" : "csvHeader",
+        "value" : "NO_HEADER"
+      }, {
+        "name" : "csvMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "csvCustomDelimiter",
+        "value" : "|"
+      }, {
+        "name" : "csvCustomEscape",
+        "value" : "\\"
+      }, {
+        "name" : "csvCustomQuote",
+        "value" : "\""
+      }, {
+        "name" : "csvRecordType",
+        "value" : "LIST_MAP"
+      }, {
+        "name" : "xmlRecordElement",
+        "value" : null
+      }, {
+        "name" : "xmlMaxObjectLen",
+        "value" : 4096
+      }, {
+        "name" : "logMode",
+        "value" : "COMMON_LOG_FORMAT"
+      }, {
+        "name" : "logMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "retainOriginalLine",
+        "value" : false
+      }, {
+        "name" : "customLogFormat",
+        "value" : "%h %l %u %t \"%r\" %>s %b"
+      }, {
+        "name" : "regex",
+        "value" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)"
+      }, {
+        "name" : "fieldPathsToGroupName",
+        "value" : [ {
+          "fieldPath" : "/",
+          "group" : 1
+        } ]
+      }, {
+        "name" : "grokPatternDefinition",
+        "value" : null
+      }, {
+        "name" : "grokPattern",
+        "value" : "%{COMMONAPACHELOG}"
+      }, {
+        "name" : "onParseError",
+        "value" : "ERROR"
+      }, {
+        "name" : "maxStackTraceLines",
+        "value" : 50
+      }, {
+        "name" : "enableLog4jCustomLogFormat",
+        "value" : false
+      }, {
+        "name" : "log4jCustomLogFormat",
+        "value" : "%r [%t] %-5p %c %x - %m%n"
+      }, {
+        "name" : "schemaInMessage",
+        "value" : true
+      }, {
+        "name" : "avroSchema",
+        "value" : null
+      }, {
+        "name" : "binaryMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      } ],
+      "uiInfo" : {
+        "rawSource" : {
+          "configuration" : [ {
+            "name" : "brokerHost",
+            "value" : "localhost"
+          }, {
+            "name" : "brokerPort",
+            "value" : 9092
+          }, {
+            "name" : "topic",
+            "value" : "myTopic"
+          }, {
+            "name" : "partition"
+          }, {
+            "name" : "maxWaitTime",
+            "value" : 1000
+          } ]
+        },
+        "yPos" : 56,
+        "xPos" : -445,
+        "description" : "",
+        "stageType" : "SOURCE",
+        "label" : "Kafka Consumer 1"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ "com_streamsets_pipeline_stage_origin_kafka_KafkaDSource1445481526846OutputLane14454815268460" ]
+    }, {
+      "instanceName" : "com_streamsets_pipeline_stage_processor_jython_JythonDProcessor1445481560991",
+      "library" : "streamsets-datacollector-jython_2_7-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_jython_JythonDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "processingMode",
+        "value" : "BATCH"
+      }, {
+        "name" : "script",
+        "value" : "import urllib2\nmaxXvalue = 0\nmaxYvalue = 0\nmaxZvalue = 0\nfor record in records:\n  try:\n    log.info(\"x = {}, y = {}, z = {}\", record.value['x'], record.value['y'], record.value['z'])\n    maxXvalue = max(record.value['x'], maxXvalue)\n    maxYvalue = max(record.value['y'], maxYvalue)\n    maxZvalue = max(record.value['z'], maxZvalue)\n    out.write(record)\n  except Exception as e:\n    # Send record to error\n    err.write(record, str(e))\ndef alert(name, value):\n  msg = \"\"\"{    \n      \"service_key\": \"TODO\",\n      \"event_type\": \"trigger\",\n      \"description\": \"Value %s exceeded threshold: %f\"\n}\"\"\" % (name, value)\n  log.info(\"Alert: \" + msg)\n  url = \"https://events.pagerduty.com/generic/2010-04-15/create_event.json\"\n  headers = {'Content-type': 'application/json'}\n  u = urllib2.urlopen(url, msg)\nif maxXvalue > 6:\n  alert('X', maxXvalue)\nif maxYvalue > 6:\n  alert('Y', maxYvalue)\nif maxZvalue > 6:\n  alert('Z', maxZvalue)"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ "${record:value(\"/x\") >= 0}" ]
+      } ],
+      "uiInfo" : {
+        "yPos" : 56,
+        "xPos" : -107,
+        "description" : "",
+        "stageType" : "PROCESSOR",
+        "label" : "Jython Evaluator 1"
+      },
+      "inputLanes" : [ "com_streamsets_pipeline_stage_origin_kafka_KafkaDSource1445481526846OutputLane14454815268460" ],
+      "outputLanes" : [ "com_streamsets_pipeline_stage_processor_jython_JythonDProcessor1445481560991OutputLane14454815609910" ]
+    }, {
+      "instanceName" : "com_streamsets_pipeline_stage_destination_hdfs_HdfsDTarget1445486557235",
+      "library" : "streamsets-datacollector-cdh_5_4-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_hdfs_HdfsDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "hdfsUri",
+        "value" : "hdfs://node00.local:8020"
+      }, {
+        "name" : "hdfsUser",
+        "value" : ""
+      }, {
+        "name" : "hdfsKerberos",
+        "value" : true
+      }, {
+        "name" : "hdfsConfDir",
+        "value" : "/etc/hadoop/conf/"
+      }, {
+        "name" : "hdfsConfigs",
+        "value" : [ ]
+      }, {
+        "name" : "uniquePrefix",
+        "value" : "sdc-${sdc:id()}"
+      }, {
+        "name" : "dirPathTemplate",
+        "value" : "/tmp/crash_events/${YYYY()}-${MM()}-${DD()}-${hh()}-${mm()}"
+      }, {
+        "name" : "timeZoneID",
+        "value" : "UTC"
+      }, {
+        "name" : "timeDriver",
+        "value" : "${time:now()}"
+      }, {
+        "name" : "maxRecordsPerFile",
+        "value" : 0
+      }, {
+        "name" : "maxFileSize",
+        "value" : 0
+      }, {
+        "name" : "compression",
+        "value" : "NONE"
+      }, {
+        "name" : "otherCompression",
+        "value" : null
+      }, {
+        "name" : "fileType",
+        "value" : "TEXT"
+      }, {
+        "name" : "keyEl",
+        "value" : "${uuid()}"
+      }, {
+        "name" : "seqFileCompressionType",
+        "value" : "BLOCK"
+      }, {
+        "name" : "lateRecordsLimit",
+        "value" : "${5 * SECONDS}"
+      }, {
+        "name" : "lateRecordsAction",
+        "value" : "SEND_TO_ERROR"
+      }, {
+        "name" : "lateRecordsDirPathTemplate",
+        "value" : "/tmp/late/${YYYY()}-${MM()}-${DD()}"
+      }, {
+        "name" : "dataFormat",
+        "value" : "JSON"
+      }, {
+        "name" : "charset",
+        "value" : "UTF-8"
+      }, {
+        "name" : "csvFileFormat",
+        "value" : "CSV"
+      }, {
+        "name" : "csvHeader",
+        "value" : "NO_HEADER"
+      }, {
+        "name" : "csvReplaceNewLines",
+        "value" : true
+      }, {
+        "name" : "jsonMode",
+        "value" : "MULTIPLE_OBJECTS"
+      }, {
+        "name" : "textFieldPath",
+        "value" : "/text"
+      }, {
+        "name" : "textEmptyLineIfNull",
+        "value" : false
+      }, {
+        "name" : "avroSchema",
+        "value" : null
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "yPos" : 58,
+        "xPos" : 281,
+        "description" : "",
+        "stageType" : "TARGET",
+        "label" : "Hadoop FS 1"
+      },
+      "inputLanes" : [ "com_streamsets_pipeline_stage_processor_jython_JythonDProcessor1445481560991OutputLane14454815609910" ],
+      "outputLanes" : [ ]
+    } ],
+    "errorStage" : {
+      "instanceName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget1445481552246",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "yPos" : 50,
+        "xPos" : -60,
+        "description" : "",
+        "stageType" : "TARGET",
+        "label" : "Bad Records - Discard"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ]
+    },
+    "info" : {
+      "name" : "TEST1",
+      "description" : "",
+      "created" : 1445481657483,
+      "lastModified" : 1445652714576,
+      "creator" : "admin",
+      "lastModifier" : "admin",
+      "lastRev" : "0",
+      "uuid" : "55e4977f-9abd-4c4c-a264-eb85c2dfaa5e",
+      "valid" : true
+    },
+    "valid" : true,
+    "issues" : {
+      "issueCount" : 0,
+      "pipelineIssues" : [ ],
+      "stageIssues" : { }
+    },
+    "previewable" : true
+  },
+  "pipelineRules" : {
+    "metricsRuleDefinitions" : [ {
+      "id" : "badRecordsAlertID",
+      "alertText" : "High incidence of Bad Records",
+      "metricId" : "pipeline.batchErrorRecords.meter",
+      "metricType" : "METER",
+      "metricElement" : "METER_COUNT",
+      "condition" : "${value() > 100}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "valid" : true
+    }, {
+      "id" : "stageErrorAlertID",
+      "alertText" : "High incidence of Error Messages",
+      "metricId" : "pipeline.batchErrorMessages.meter",
+      "metricType" : "METER",
+      "metricElement" : "METER_COUNT",
+      "condition" : "${value() > 100}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "valid" : true
+    }, {
+      "id" : "idleGaugeID",
+      "alertText" : "Pipeline is Idle",
+      "metricId" : "RuntimeStatsGauge.gauge",
+      "metricType" : "GAUGE",
+      "metricElement" : "TIME_OF_LAST_RECEIVED_RECORD",
+      "condition" : "${time:now() - value() > 120000}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "valid" : true
+    }, {
+      "id" : "batchTimeAlertID",
+      "alertText" : "Batch taking more time to process",
+      "metricId" : "RuntimeStatsGauge.gauge",
+      "metricType" : "GAUGE",
+      "metricElement" : "CURRENT_BATCH_AGE",
+      "condition" : "${value() > 200}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "valid" : true
+    }, {
+      "id" : "memoryLimitAlertID",
+      "alertText" : "Memory limit for pipeline exceeded",
+      "metricId" : "pipeline.memoryConsumed.counter",
+      "metricType" : "COUNTER",
+      "metricElement" : "COUNTER_COUNT",
+      "condition" : "${value() > (jvm:maxMemoryMB() * 0.65)}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "valid" : true
+    } ],
+    "dataRuleDefinitions" : [ ],
+    "emailIds" : [ ],
+    "uuid" : "7fe5f4ca-419d-443c-aec9-bbad77dfdb17",
+    "ruleIssues" : [ ]
+  }
+}
