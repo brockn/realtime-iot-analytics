@@ -6,8 +6,8 @@ import UIKit
 import CoreMotion
 
 class ViewController: UIViewController {
-    let FLUME_ENDPOINT = "http://ec2-52-24-241-251.us-west-2.compute.amazonaws.com:5140"
-    let PHP_ENDPOINT = "http://ec2-52-24-241-251.us-west-2.compute.amazonaws.com:80"
+    let FLUME_ENDPOINT = "http://ec2-xxx.us-west-2.compute.amazonaws.com:5140"
+    let PHP_ENDPOINT = "http://ec2-xxx.us-west-2.compute.amazonaws.com:80"
 
     let manager = CMMotionManager()
     let queue = NSOperationQueue()
